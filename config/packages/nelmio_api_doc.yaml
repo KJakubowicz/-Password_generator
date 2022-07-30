@@ -1,9 +1,40 @@
 nelmio_api_doc:
     documentation:
         info:
-            title: My App
-            description: This is an awesome app!
+            title: API
+            description: API for password generate
             version: 1.0.0
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+            - Bearer: []
+        paths:
+            /api/v1/password_generator:
+                get:
+                    summary: Generates password.
+                    parameters:
+                        -   in: header
+                            name: length
+                            required: true
+                        -   in: header
+                            name: lowercase
+                            required: true
+                        -   in: header
+                            name: uppercase
+                            required: true
+                        -   in: header
+                            name: symbols
+                            required: true
+                        -   in: header
+                            name: numbers
+                            required: true
+
     areas: # to filter documented areas
         path_patterns:
             - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
+        host_patterns: # document only routes with a host of the form api.*
+        - ^api\.
