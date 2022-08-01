@@ -62,6 +62,19 @@ class PasswordGeneratorController extends AbstractController
         $this->_aHeaders = apache_request_headers();
     }
 
+     /**
+     * Check connection
+     * 
+     * @return JsonReposne
+     */
+    #[Route('/api/v1/auth', name: 'app_auth')]
+    public function auth(): JsonResponse
+    {
+        return $this->json([
+            'data'    => 1,
+        ]);
+    }
+
     /**
      * Intermediary between the result and the action
      * 
